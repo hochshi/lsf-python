@@ -73,7 +73,7 @@ _OPTIONS = {o.name: o for o in
 
 def get_options(submit_struct):
     result = {}
-    for name, option in _OPTIONS.iteritems():
+    for name, option in _OPTIONS.items():
         value = option.get_value(submit_struct)
         if value is not None:
             result[name] = value
@@ -84,7 +84,7 @@ def set_options(request, options):
     if not options:
         return
 
-    for name, value in options.iteritems():
+    for name, value in options.items():
         option = _OPTIONS.get(name)
         if not option:
             raise InvalidOption(name)

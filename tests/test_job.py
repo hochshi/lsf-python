@@ -70,16 +70,22 @@ class JobStatusTests(unittest.TestCase):
 
 class JobKillTests(unittest.TestCase):
     def test_kill_sleep_job(self):
-        job = lsf.submit('sleep 100')
+        job = lsf.submit('ls && sleep 1000')
+
+        print(job.as_dict)
+
+        time.sleep(100)
 
         job.kill()
+
+        print(job.as_dict)
 
         job_dict = _get_job_dict(job)
         self.assertIn('EXIT', job_dict['statuses'])
 
 
 def _get_job_dict(job):
-    for attempt in xrange(_MAX_RETRIES):
+    for attempt in range(_MAX_RETRIES):
         try:
             return job.as_dict
         except lsf.exceptions.InvalidJob:

@@ -74,7 +74,7 @@ _STATUSES = {
 }
 def translate_status(status_code):
     statuses = set()
-    for bitmask, name in _STATUSES.iteritems():
+    for bitmask, name in _STATUSES.items():
         if bitmask & status_code:
             statuses.add(name)
 
@@ -105,7 +105,7 @@ _DIRECT_COPY_FIELDS = [
     'submitTime',
 ]
 _TRANSFORM_FIELDS = {
-    'umask': lambda x: string.zfill(x, 4),
+    'umask': lambda x: str(x).zfill(4),
 }
 _GREATER_ZERO_FIELDS = [
     'cpuTime',
@@ -130,7 +130,7 @@ def _get_additional_lsf_supplied_fields(jobinfo):
 
     result.update({
         field: transform(getattr(jobinfo, field))
-            for field, transform in _TRANSFORM_FIELDS.iteritems()
+            for field, transform in _TRANSFORM_FIELDS.items()
     })
 
 

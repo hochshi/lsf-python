@@ -1,1 +1,1 @@
-platform-python-lsf-api >= 0.0.3
+git+https://github.com/IBMSpectrumComputing/lsf-python-api@master#pythonlsf

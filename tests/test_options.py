@@ -25,7 +25,7 @@ class OptionTest(unittest.TestCase):
             'resReq': api.SUB_RES_REQ,
         }
 
-        for name, flag in test_options.iteritems():
+        for name, flag in test_options.items():
             request = self.mock_request()
             options.set_options(request, {name: 'test_value'})
             self.assertEqual(request.options, flag)
@@ -36,7 +36,7 @@ class OptionTest(unittest.TestCase):
             'group': api.SUB2_JOB_GROUP,
         }
 
-        for name, flag in test_options.iteritems():
+        for name, flag in test_options.items():
             request = self.mock_request()
             options.set_options(request, {name: 'test_value'})
             self.assertEqual(request.options2, flag)

@@ -7,3 +7,5 @@
 /ChangeLog
 /build
 /dist
+/.eggs
+/.vscode

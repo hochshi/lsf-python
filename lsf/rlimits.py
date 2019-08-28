@@ -44,12 +44,22 @@ _RLIMITS = {
         Limit('stack', api.LSF_RLIMIT_STACK),
         Limit('threads', api.LSF_RLIMIT_THREAD),
         Limit('virtualMemory', api.LSF_RLIMIT_VMEM),
+        
+        Limit('fSize', api.LSF_RLIMIT_FSIZE),
+        Limit('data', api.LSF_RLIMIT_DATA),
+        Limit('core', api.LSF_RLIMIT_CORE),
+        Limit('run', api.LSF_RLIMIT_RUN),
+        Limit('swap', api.LSF_RLIMIT_SWAP),
     ]
+    # o.name: o for o in map(
+    #     lambda x: Limit(x.rpartition('_')[2], getattr(api, x)),
+    #     filter(lambda x: x.startswith('LSF_RLIMIT_'), dir(api))
+    # )
 }
 
 
 _REVERSE_RLIMITS = {
-    o.option_index: o.name for o in _RLIMITS.itervalues()
+    o.option_index: o.name for o in _RLIMITS.values()
 }
 
 
@@ -65,7 +75,7 @@ def get_rlimits(request):
 
 def set_rlimits(request, rlimits):
     rlimits_array = [api.DEFAULT_RLIMIT] * api.LSF_RLIM_NLIMITS
-    for name, value in rlimits.iteritems():
+    for name, value in rlimits.items():
         try:
             _RLIMITS[name].set_limit(rlimits_array, value)
         except KeyError:
