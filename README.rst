@@ -19,12 +19,7 @@ Basic job submission:
 Installation
 ------------
 
-For installation, make sure you set the following environment variables:
-
-::
-
-    export LSF_INCLUDEDIR=/usr/local/lsf/8.0/include
-    export LSF_LIBDIR=/usr/local/lsf/8.0/linux2.6-glibc2.3-x86_64/lib
+Install https://github.com/IBMSpectrumComputing/lsf-python-api 
 
 Then, simply install with pip:
 
@@ -35,9 +30,6 @@ Then, simply install with pip:
 
 Testing
 -------
-
-To run tests, make sure that the environment variables specified in
-`Installation`_ are set.  Then run tox:
 
 ::
 
